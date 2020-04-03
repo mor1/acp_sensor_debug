@@ -63,7 +63,7 @@ python history_server.py
 this will start the server locally on port 5000
 
 
-## 2. client
+## 3. client
 
 Open a new terminal window and navigate inside the root folder of the client application, then run:
 
