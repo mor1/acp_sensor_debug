@@ -9,12 +9,12 @@ app = Flask(__name__)
 #cors = CORS(app)
 
 basePath = "/media/acp/mqtt_ttn/data_bin/"
-basePath = "../../ttn_data/mnt/tfc_data/tfc/csn_ttn/data_bin/"
 DEBUG = True
 
 def date_to_path(selecteddate):
     data = selecteddate.split('-')
     return(data[0]+'/'+data[1]+'/'+data[2]+'/')
+
 
 @app.route('/history')
 def historical():
