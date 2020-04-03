@@ -79,7 +79,26 @@ Currently temperature, co2, light and humidity data are supported. To view the s
 In order to view historical charts, go to *http://localhost:8080/static/historical.html*. Fill the form and click update.
 
 ## Known Issues
-There are some known issues which have listed in the issues of the repository and the related fixes also provided.
+### Internal watch fails with nodemon
+* Issue: Sometimes the server fails with the error
+
+"Internal watch failed: watch /mqtt-ttn-chart/mqtt-ttn-server ENOSPC"
+npm ERR! Linux 5.3.0-40-generic
+npm ERR! argv "/usr/bin/node" "/usr/bin/npm" "start"
+npm ERR! node v8.10.0
+npm ERR! npm v3.5.2
+npm ERR! code ELIFECYCLE
+npm ERR! server@1.0.0 start: ./node_modules/nodemon/bin/nodemon.js src/app.js
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the server@1.0.0 start script './node_modules/nodemon/bin/nodemon.js src/app.js'.
+
+* Solution: 
+Run the following to resolve the above issue;
+
+sudo sysctl fs.inotify.max_user_watches=582222 && sudo sysctl -p
+
+This increases the watches allowed for a user which could be low by default.
 
 ## Work in Progress
 + A component to localize all sensors on map
