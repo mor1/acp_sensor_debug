@@ -1,4 +1,35 @@
+# ACP Sensor Debug
+
 This project demonstrates the visualization of data streams received from multiple sensors over MQTT through The Things Network and local sensors.
+
+## Architecture
+
+ACP Sensor Debug has three key elements:
+
+1. Providing a restful API allowing access to the sensor data on the platform.
+
+2. Providing a simple templated web serving capability, used for serving web pages that:
+    1. enable selection of a data source
+    1. enable selection of a sensor from that source
+    1. enable selection of a JSON property for a data value from each data reading, and a property
+    (default acp_ts) for a time value from the same data reading
+    1. providing a graph for the data given the above parameters
+    1. allowing the user to navigate backwards and forwards in time in the above graph.
+
+3. Supporting real-time update of data into the served pages.
+
+## Technology choices (currently candidates, as we refine the design)
+
+1. Restful API
+    Python / Flask, as below
+
+2. Templated web server
+    Suggestion for now: also use Python / Flask with the `render_template()` function
+
+3. Real-time web-page update
+    This should be a templated web page which opens web sockets to
+    [acp_server/RTMonitor](https://github.com/AdaptiveCity/acp_server/tree/master/src/main/java/acp_server/rtmonitor)
+    A testing webpage for RTMonitor-connecting web pages is [RTClient](https://github.com/ijl20/rtclient)
 
 ## Features
 ### TTN Server
@@ -93,7 +124,7 @@ npm ERR! Exit status 1
 npm ERR!
 npm ERR! Failed at the server@1.0.0 start script './node_modules/nodemon/bin/nodemon.js src/app.js'.
 
-* Solution: 
+* Solution:
 Run the following to resolve the above issue;
 
 sudo sysctl fs.inotify.max_user_watches=582222 && sudo sysctl -p
