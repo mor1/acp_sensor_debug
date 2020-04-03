@@ -18,7 +18,18 @@ function drawLineChart() {
       var hours = date.getHours();
       labels.push(hours)
       data.push(parseFloat(packet.val));
-    });
+    });    
+
+    // // Get the context of the canvas element we want to select
+    var ctx = document.getElementById("myChart");
+
+    // if(myNewChart != undefined){
+    //   myNewChart.destroy();
+    // }
+    var updateButton = document.getElementById('updateButton');
+    updateButton.addEventListener("click", function(){
+      myNewChart.destroy();
+    });    
 
     // Create the chart.js data structure using 'labels' and 'data'
     var tempData = {
@@ -34,13 +45,6 @@ function drawLineChart() {
       }]
     };
 
-    // // Get the context of the canvas element we want to select
-    var ctx = document.getElementById("myChart");
-
-    if(myNewChart){
-      myNewChart.destroy();
-    }
-
     // // // Instantiate a new chart
     var myNewChart = new Chart(ctx , {
       type: "line",
@@ -53,7 +57,7 @@ function drawLineChart() {
 
         },
         fill: false,
-        showLines: false,
+        showLines: false,        
         legend: {
           display: false
         },

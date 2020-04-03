@@ -4,7 +4,7 @@
     <title>Offline Chart</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
   </head>
   <body>
     <div class="wrapper">      
@@ -27,12 +27,12 @@
           <option>light</option>
         </select>
       </form>
-      <button onclick="drawLineChart()">Update</button>
+      <button id="updateButton" onclick="drawLineChart()">Update</button>
 
       <br>
       <canvas id="myChart" width="2400" height="1000"></canvas>
     </div>
 
-    <script src="plotscript.js"></script>
+    <script src="{{ url_for('static',filename='js/plotscript.js') }}"></script>
   </body>
 </html>

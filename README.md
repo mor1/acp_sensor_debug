@@ -40,14 +40,14 @@ ACP Sensor Debug has three key elements:
 + Subscribes to MQTT topic
 + forwards the received messages to the client using websockets
 
-### Historical Data Server
+
+### TTN Client
++ real-time data visualization with a multi-series line chart
+
+### Historical Chart Server
 + reads the historical data
 + provides an API to retrieve the historical data
-
-
-### Client
-+ real-time data visualization with a multi-series line chart
-+ historical data visualization
++ displays the historical charts based on user inputs
 
 ## Getting Started
 
@@ -58,7 +58,7 @@ Before you run the client, be sure you have these downloaded/installed on your m
 + node.js
 + npm
 + python3.6
-+ python-flask and python-flask_cors (use python-pip)
++ python-flask (use python-pip)
 + have the feedmqtt.ttn secrets file
 
 ### Installing
@@ -88,17 +88,8 @@ npm start
 
 this will install the dependencies and start the express server locally on port 3000.
 
-## 2. historical-data-server
-Navigate inside the root folder and run,
 
-```
-python history_server.py
-```
-
-this will start the server locally on port 5000
-
-
-## 3. client
+## 2. client
 
 Open a new terminal window and navigate inside the root folder of the client application, then run:
 
@@ -111,7 +102,16 @@ After compilation, you will see the link in the terminal *(e.g. http://localhost
 
 Currently temperature, co2, light and humidity data are supported. To view the specific feature data go to *http://localhost:8080/feature* or use the navigation bar. The default is temperature. Note that not all sensors have all features and in those cases a blank chart would be seen.
 
-In order to view historical charts, go to *http://localhost:8080/static/historical.html*. Fill the form and click update.
+## 2. historical-data-server
+Navigate inside the root folder and run,
+
+```
+python history_server.py
+```
+
+this will start the server locally on port 5000
+
+In order to view historical charts, go to *http://localhost:5000/history*. Fill the form and click update.
 
 ## Known Issues
 ### Internal watch fails with nodemon
