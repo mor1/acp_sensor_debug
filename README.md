@@ -1,4 +1,4 @@
-This project demonstrates the visualization of data streams received from multiple sensors over MQTT through The Things Network. (Could be modified to serve other MQTT brokers too.)
+This project demonstrates the visualization of data streams received from multiple sensors over MQTT through The Things Network and local sensors.
 
 ## Features
 ### TTN Server
