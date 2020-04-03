@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Offline Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">      
+      
+      <form id="myForm">
+        Date: <input type="date" name="date" id="myForm.date" value="2020-03-15"><br>
+        Sensor: <select id="myForm.sensor" name="sensor">
+          <option>ijl20-sodaq-ttn</option>
+          <option>elsys-co2-041ba9</option>
+          <option>elsys-co2-0461e3</option>
+          <option>elsys-co2-0461e7</option>          
+          <option>elsys-eye-044501</option>
+          <option>elsys-ems-048f2b</option>
+        </select>
+        Feature: <select id="myForm.feature" name="feature">
+          <option>temperature</option>
+          <option>frequency</option>
+          <option>co2</option>          
+          <option>humidity</option>
+          <option>light</option>
+        </select>
+      </form>
+      <button onclick="drawLineChart()">Update</button>
+
+      <br>
+      <canvas id="myChart" width="2400" height="1000"></canvas>
+    </div>
+
+    <script src="plotscript.js"></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+# Ignore node_modules folder
+node_modules
+
+#Ignore config file on server
+mqtt-ttn-server/src/config.json
+
+#Ignore debug-log
+mqtt-ttn-server/npm-debug.log
+mqtt-ttn-client/npm-debug.log
+
+#Ignore dummy view
+mqtt-ttn-chart/mqtt-ttn-client/src/components/offline.vue
+
+#Ignore proxyserver
+proxy-server
