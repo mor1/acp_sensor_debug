@@ -100,14 +100,3 @@ There are some known issues which have listed in the issues of the repository an
 * [Chart.js](https://www.chartjs.org/) - Javascript tool for charts
 * [Socket.io-client](https://github.com/socketio/socket.io) - real-time bidirectional event-based communication using websockets (client)
 * [Bootstrap](https://github.com/twbs/bootstrap) - HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.
-
-
-
-## Authors
-
-* **Rohit Verma** - [GitHub](https://github.com/rv355)
-
-## Acknowledgement
-
-* **Nick Jokic** for JavaScript: Real-time visualization of high-frequency streams (https://itnext.io/javascript-real-time-visualization-of-high-frequency-streams-d6533c774794)
-
