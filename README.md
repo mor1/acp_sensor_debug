@@ -21,14 +21,18 @@ ACP Sensor Debug has three key elements:
 ## Technology choices (currently candidates, as we refine the design)
 
 1. Restful API
+
     Python / Flask, as below
 
 2. Templated web server
+
     Suggestion for now: also use Python / Flask with the `render_template()` function
 
 3. Real-time web-page update
+
     This should be a templated web page which opens web sockets to
     [acp_server/RTMonitor](https://github.com/AdaptiveCity/acp_server/tree/master/src/main/java/acp_server/rtmonitor)
+
     A testing webpage for RTMonitor-connecting web pages is [RTClient](https://github.com/ijl20/rtclient)
 
 ## Features
