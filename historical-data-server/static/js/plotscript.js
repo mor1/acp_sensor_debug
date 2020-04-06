@@ -1,12 +1,78 @@
+function getSensor(){
+  var source = document.getElementById("source").value
+  const url = 'http://localhost:5000/sensors?source='+source;
+
+  var jsonData1 = $.ajax({
+      url: url,
+      dataType: 'json',
+      xhrFields: {
+        withCredentials: true
+      },
+      async: true,
+      headers: {"Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "x-requested-with"},
+      crossDomain: true
+    }).done(function (results) {
+      var data=[];
+      results["data"].forEach(function(packet) {
+        data.push(packet.sensor);
+      });
+      
+      var opt = '';
+      for (var i = 0; i < data.length; i++){
+        console.log(data[i]);
+        opt += '<option value= "' + data[i] + '">' + data[i] + '</option>';
+      }
+      $('#sensor').html(opt);
+        
+    });
+    
+}
+
+function getFeature(){
+  var date = document.getElementById("date").value
+  var source = document.getElementById("source").value
+  var sensor = document.getElementById("sensor").value
+  const url = 'http://localhost:5000/features?date='+date+'&source='+source+'&sensor='+sensor;
+
+  var jsonData2 = $.ajax({
+      url: url,
+      dataType: 'json',
+      xhrFields: {
+        withCredentials: true
+      },
+      async: true,
+      headers: {"Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "x-requested-with"},
+      crossDomain: true
+    }).done(function (results) {
+      var data=[];
+      results["data"].forEach(function(packet) {
+        data.push(packet.feature);
+      });
+      
+      var opt = '';
+      for (var i = 0; i < data.length; i++){
+        console.log(data[i]);
+        opt += '<option value= "' + data[i] + '">' + data[i] + '</option>';
+      }
+      $('#feature').html(opt);
+        
+    });
+    
+}
+
 function drawLineChart() {
-  
-  var selecteddate = document.getElementById("myForm.date").value;
-  var sensor = document.getElementById("myForm.sensor").value;
-  var feature = document.getElementById("myForm.feature").value;
-  var url = 'http://localhost:5000?date='+selecteddate+'&sensor='+sensor+'&feature='+feature
+
+  var selecteddate = document.getElementById("date").value;
+  var source = document.getElementById("source").value;
+  var sensor = document.getElementById("sensor").value;
+  var feature = document.getElementById("feature").value;
+  var url = 'http://localhost:5000?date='+selecteddate+'&source='+source+'&sensor='+sensor+'&feature='+feature
   var jsonData = $.ajax({
     url: url,
     dataType: 'json',
+    async: true,
     headers: {"Access-Control-Allow-Origin": "*"},
   }).done(function (results) {
 
@@ -23,9 +89,6 @@ function drawLineChart() {
     // // Get the context of the canvas element we want to select
     var ctx = document.getElementById("myChart");
 
-    // if(myNewChart != undefined){
-    //   myNewChart.destroy();
-    // }
     var updateButton = document.getElementById('updateButton');
     updateButton.addEventListener("click", function(){
       myNewChart.destroy();

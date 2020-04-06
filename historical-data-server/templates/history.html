@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Offline Chart</title>
+    <title>Historical Chart</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}?v=1.0.0">
   </head>
   <body>
     <div class="wrapper">      
       
       <form id="myForm">
-        Date: <input type="date" name="date" id="myForm.date" value="2020-03-15"><br>
-        Sensor: <select id="myForm.sensor" name="sensor">
-          <option>ijl20-sodaq-ttn</option>
-          <option>elsys-co2-041ba9</option>
-          <option>elsys-co2-0461e3</option>
-          <option>elsys-co2-0461e7</option>          
-          <option>elsys-eye-044501</option>
-          <option>elsys-ems-048f2b</option>
-        </select>
-        Feature: <select id="myForm.feature" name="feature">
-          <option>temperature</option>
-          <option>frequency</option>
-          <option>co2</option>          
-          <option>humidity</option>
-          <option>light</option>
-        </select>
+        Date:   <input type="date" name="date" id="date" value="2020-03-15"><br>
+        Source: <select id="source" name="source" onchange="getSensor()">
+                  <option>Select source</option>
+                  <option>mqtt_ttn</option>
+                  <option>mqtt_csn</option>
+                </select>
+        Sensor: <select id="sensor" name="sensor" onchange="getFeature()">
+                  <option value="">Select sensor</option>
+              </select>
+        Feature: <select id="feature" name="feature">
+                  <option>Select feature</option>
+                </select>
       </form>
       <button id="updateButton" onclick="drawLineChart()">Update</button>
 
@@ -33,6 +29,6 @@
       <canvas id="myChart" width="2400" height="1000"></canvas>
     </div>
 
-    <script src="{{ url_for('static',filename='js/plotscript.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/plotscript.js') }}?v=1.0.0"></script>
   </body>
 </html>
